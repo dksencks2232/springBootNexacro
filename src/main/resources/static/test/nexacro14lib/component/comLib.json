@@ -1,0 +1,16 @@
+{
+	"name": "comLib",
+	"version": "1.0.0",
+	"description": "comLib",
+	"license": "",
+	"scripts": [
+
+        "comLib/lib_base.js",      //main contextz
+		"comLib/lib_transaction.js",      //Global variable js
+       
+		
+
+	]
+}
+//@ sourceURL=IjectJS.json
+

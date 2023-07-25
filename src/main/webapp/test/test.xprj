@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project active_adl="test" version="1.3">
+  <TypeDefinition url="default_typedef.xml"/>
+  <GlobalVariables url="globalvars.xml"/>
+  <ADL id="test" url="test.xadl"/>
+  <Themes>
+    <RecentlyUsed>
+      <Theme url="BaseMdi.xtheme" extern="false"/>
+    </RecentlyUsed>
+  </Themes>
+  <Services>
+    <Service id="img" file_ext="" include_subdir="false"/>
+    <Service id="comLib" file_ext="" include_subdir="false"/>
+  </Services>
+</Project>

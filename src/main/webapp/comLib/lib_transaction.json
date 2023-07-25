@@ -1,0 +1,9 @@
+{
+  "name": "comLib", //라이브러리명
+  "version": "1.0.0.0",    //라이브러리 버전
+  "description": "트렌젝션", //라이브러리 설명
+  //라이브러리 파일 경로(파일이 1개 이상일 경우 Array형태로 설정)
+  "scripts": [
+      "comLib/lib_transaction.js","comLib/lib_base.js"
+  ]
+}
