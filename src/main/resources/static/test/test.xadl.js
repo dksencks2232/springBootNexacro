@@ -48,11 +48,22 @@
         this.on_loadGlobalVariables = function()
         {
             // global variable
+            this._addVariable("MvFrameSet", "none", "false", "false");
 
             // global image
 
             // global dataset
             var obj = null;
+            obj = new Dataset("gds_menu", this);
+            obj._setContents("<ColumnInfo><Column id=\"MENU_NAME\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"MENU_SEQ\" type=\"int\" size=\"4\" prop=\"\"/><Column id=\"MENU_OPTP\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"PAGE_URL\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"MENU_TOP\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"MENU_ID\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"MENU_GRP\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"CREATE_DT\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"MENU_LEVEL\" type=\"int\" size=\"4\" prop=\"\"/><Column id=\"PAGE_ID\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"PAGE_NAME\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"MENU_ARGS\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"MENU_STAT\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"CREATE_USER\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"UPDATE_DT\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"UPDATE_USER\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"MENU_DESC\" type=\"string\" size=\"32\" prop=\"\"/><Column id=\"MENU_AUTH\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this._addDataset(obj.name, obj);
+            obj = null;
+
+            obj = new Dataset("gds_userInfo", this);
+            obj._setContents("<ColumnInfo><Column id=\"USER_ID\" type=\"STRING\" size=\"256\"/><Column id=\"USER_NM\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"USER_ID\">admin</Col><Col id=\"USER_NM\">admin</Col></Row></Rows>");
+            this._addDataset(obj.name, obj);
+            obj = null;
+
 
             
 
@@ -134,6 +145,7 @@
         
         this.on_initEvent = function()
         {
+            this.addEventHandler("onload", this.application_onload, this);
 
         };
         
@@ -144,8 +156,26 @@
         }
         
         // script Compiler
+        this.addIncludeScript("test.xadl", "comLib::lib_transaction.xjs");
+        this.registerScript("test.xadl", function() {
 
-        this.checkLicense("");
+        /**
+         * Application 최초 로딩시 발생하는 이벤트 
+         * @return
+         * @example
+         * @memberOf Global
+         */
+         //include "comLib::lib_transaction.xjs" 
+        this.application_onload = function(obj,e)
+        {
+           //초기 application onload setting
+           this.appOnload(obj);
+        }
+        
+        });
+
+
+        this.checkLicense("../WEB-INF/lib/nexacro14_client_license.xml");
         this.loadTypedefition();
         this.loadScreenInfo();
         this.loadTheme("BaseMdi.xtheme");

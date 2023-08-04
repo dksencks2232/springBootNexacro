@@ -254,8 +254,8 @@
         	
         	var strSvcId    = "search";
         	var strSvcUrl   = application.services["svcurl"].url + "/login.do";
-        	var inData      = "";
-        	var outData     = "";
+        	var inData = "dsLogin=dsLogin";
+        	var outData = "gds_userInfo=gds_userInfo gds_menu=gds_menu";
         	var strArg      = "";
         	var callBackFnc = "Login_callback";
         	var isAsync   	= true;
@@ -282,7 +282,18 @@
         // 	} else {
         // 		this.alert("로그인 실패");
         // 	}
-        	application.mainframe.VFrameSet0.set_separatesize("0,*,65");   
+        	if( 0 == code ){
+        		application.mainframe.VFrameSet0.set_separatesize("0,*,65"); 
+        		
+        		this.appOnload(application);
+        		MleftFrame.form.ds_menu.clearData();
+         		MleftFrame.form.ds_menu.assign(application.gds_menu);
+         		MleftFrame.form.ds_menu.copyData(application.gds_menu);
+        	}else{
+        		  this.gfnAlert("ID나 Password가 틀렸습니다.","로그인");
+        	}
+        	
+        	
         }
 
         

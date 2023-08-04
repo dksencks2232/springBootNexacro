@@ -37,7 +37,7 @@
 /***********************************************************************************
 * include 선언부  													               *
 ***********************************************************************************/
-
+include "comLib::lib_transaction.xjs" 
 /***********************************************************************************/
 /* 폼 전역변수 선언부												               */
 /***********************************************************************************/
@@ -61,7 +61,7 @@ this.fn_onload = function(obj:Form, e:nexacro.LoadEventInfo)
 //left 펼침 접힘 실행
 this.btn_leftMenuOpen_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-   Iject.Mdi.leftMenuAction(this,obj);
+   this.gfnLeftMenuAction(this,obj); 
    
 }
 

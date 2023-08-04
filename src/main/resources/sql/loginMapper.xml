@@ -6,5 +6,30 @@
 		/* loginMapper.getLoginCheck */
 		SELECT count(menu_id) as check1 FROM MENU 
 	</select>
-
+	
+	
+	<select id="getUserInfo" resultType="com.example.demo.service.userVo" >
+		/* loginMapper.getUserInfo */
+		SELECT
+			SEQ
+			, NAME
+			, NAME USER_NAME
+			, EMAIL
+			, EMAIL USER_ID
+			, PASSWORD
+			, ADDR
+			, ADDR_DETAIL
+			, ZIP_CODE
+			, PHONE
+			, TEL
+			, IMG_URL
+			, REG_DATE
+			, REG_USER
+			, UPDATE_DATE
+			, UPDATE_USER
+		FROM
+			MEMBER
+		WHERE
+			EMAIL = #{USER_ID}
+	</select>
 </mapper>

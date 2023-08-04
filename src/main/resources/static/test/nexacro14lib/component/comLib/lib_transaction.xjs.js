@@ -105,7 +105,9 @@
         		{
         			case -1 :				
         				// 서버 오류입니다.\n관리자에게 문의하세요.
-        				this.alert(errorMsg);
+        				if( !this.gfnIsEmpty(errorMsg) ){
+        					this.alert(errorMsg);
+        				}
         				break;
         				
         			case -2463215:
@@ -151,6 +153,38 @@
         		if (this[objSvcID.callback]) this[objSvcID.callback].call(this, objSvcID.svcId, errorCode, errorMsg);
         	}
         };
+
+        /**
+         * alert 공통
+         * @param {string} message
+         * @param {string} title caption message
+         * @return
+         * @example
+         * this.gfnAlert("처리되었습니다.","완료");
+         * 
+         */
+        this.gfnAlert = function(sMsg,sCaption){
+        	var pCaption = this.gfnIsEmpty(sCaption) ? "알림" : sCaption;
+        	application.alert(sMsg,pCaption);
+        };
+
+        /**
+         * confirm 공통
+         * @param {string} message
+         * @param {string} title caption message
+         * @return {boolen} true/false
+         * @example
+         * var isConfirm = Iject.confirm("처리하시겠습니까?","캡션");
+         *    if(isConfirm) alert("정상");
+         * 
+         */
+        this.gfnConfirm = function(sMsg,sCaption){
+
+        	var pCaption = this.gfnIsEmpty(sCaption) ? "확인" : sCaption;
+        		return application.confirm(sMsg,pCaption);
+
+        };
+        		
         });
 
 

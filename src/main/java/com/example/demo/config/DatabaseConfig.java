@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @MapperScan(value="com.example.demo.mapper")
+//@MapperScan(value = "com.example.demo.**")
+//@MapperScan(value="com.example.demo.**")
 public class DatabaseConfig {
 
 	@Bean
@@ -27,7 +29,7 @@ public class DatabaseConfig {
 		
 		Resource arrResource[] = new PathMatchingResourcePatternResolver().getResources("classpath:sql/*.xml");
 		sqlSessionFactoryBean.setMapperLocations(arrResource);
-		sqlSessionFactoryBean.getObject().getConfiguration().setMapUnderscoreToCamelCase(true);
+		sqlSessionFactoryBean.getObject().getConfiguration().setMapUnderscoreToCamelCase(false);//카멜표기법
 		
 		return (SqlSessionFactory)sqlSessionFactoryBean.getObject();	
 	}

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.service.loginVo;
+import com.example.demo.service.userVo;
 
 @Mapper
 @Repository
@@ -15,6 +16,8 @@ public interface loginMapper{
 //	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public loginVo getLoginCheck(loginVo loginVo) ;
+
+	public userVo getUserInfo(loginVo ds_login);
 }
 
 

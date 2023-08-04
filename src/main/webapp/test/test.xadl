@@ -2,7 +2,7 @@
 <ADL version="1.2">
   <TypeDefinition url="default_typedef.xml"/>
   <GlobalVariables url="globalvars.xml"/>
-  <Application id="test" codepage="utf-8" language="Korean" loginformurl="" loginformstyle="" windowopeneffect="" windowcloseeffect="" version="" tracemode="none" themeid="BaseMdi.xtheme">
+  <Application id="test" codepage="utf-8" language="Korean" loginformurl="" loginformstyle="" windowopeneffect="" windowcloseeffect="" version="" tracemode="none" themeid="BaseMdi.xtheme" licenseurl="..\WEB-INF\lib\nexacro14_client_license.xml" onload="application_onload">
     <Layout>
       <MainFrame id="mainframe" title="maintitle" defaultfont="" resizable="true" showtitlebar="true" showstatusbar="true" left="0" top="0" width="800" height="800">
         <VFrameSet id="VFrameSet0" separatesize="*,0,0">
@@ -39,4 +39,18 @@
     <Style url="css::TopFrame.css"/>
     <Style url="css::WorkFrame.css"/>
   </Application>
+  <Script type="xscript5.0"><![CDATA[
+/**
+ * Application 최초 로딩시 발생하는 이벤트 
+ * @return
+ * @example
+ * @memberOf Global
+ */
+ include "comLib::lib_transaction.xjs" 
+this.application_onload = function(obj:Application, e:nexacro.LoadEventInfo)
+{
+   //초기 application onload setting
+   this.appOnload(obj);
+}
+]]></Script>
 </ADL>

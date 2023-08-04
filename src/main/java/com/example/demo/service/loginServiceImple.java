@@ -20,4 +20,10 @@ public class loginServiceImple implements loginService{
 		return loginMapper.getLoginCheck(loginVo );
 	}
 
+	@Override
+	public userVo getUserInfo(loginVo ds_login) {
+		// TODO Auto-generated method stub
+		return loginMapper.getUserInfo(ds_login);
+	}
+
 }

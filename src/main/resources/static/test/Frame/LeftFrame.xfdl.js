@@ -284,6 +284,9 @@
           // LeftFrame 로딩여부 체크
           //임시
             this.ds_menu.assign(application.gds_menu);
+            this.ds_menu.copyData(application.gds_menu);
+        //     trace('ds_menu ::' + application.gds_menu.saveXML() );
+        //     trace('ds_menu ::' + this.ds_menu.saveXML() );
         }
 
         

@@ -6,5 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface loginService {
 
-	public loginVo getLoginCheck(loginVo loginVo); 
+	public loginVo getLoginCheck(loginVo loginVo);
+
+	public userVo getUserInfo(loginVo ds_login); 
 }
