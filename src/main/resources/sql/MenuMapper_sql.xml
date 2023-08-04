@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.menuMapper">
+	<select id="selectUserMenuList" resultType="com.example.demo.menu.menuVo" >
+		/* menuMapper.selectUserMenuList */
+		SELECT
+			A.MENU_ID
+			, DECODE(A.MENU_LEVEL, 0, '  ', '') || A.MENU_NAME AS MENU_NAME
+			, A.MENU_SEQ
+			, A.MENU_OPTP
+			, A.PAGE_URL
+			, A.MENU_TOP
+			, A.MENU_GRP
+			, A.MENU_LEVEL
+			, A.PAGE_ID
+			, A.PAGE_NAME
+			, A.MENU_ARGS
+			, A.MENU_STAT
+			, A.CREATE_DT
+			, A.CREATE_USER
+			, A.UPDATE_DT
+			, A.UPDATE_USER
+			, A.MENU_DESC
+			, A.MENU_AUTH
+			, level
+		FROM 
+			MENU A
+		WHERE
+			EXISTS (
+				SELECT * FROM 
+					USER_AUTH B
+					INNER JOIN MENU_AUTH C ON (B.AUTH_SEQ = C.SEQ)
+					INNER JOIN AUTH D ON (B.AUTH_SEQ = D.SEQ AND D.USE_YN = 'Y')
+				WHERE
+					B.USER_SEQ = #{SEQ}
+					AND A.MENU_ID = C.MENU_ID  
+			)
+		START WITH A.MENU_TOP IS NULL
+		CONNECT BY PRIOR A.MENU_ID = A.MENU_TOP
+		ORDER SIBLINGS BY A.MENU_SEQ
+	</select>
+	
+	
+</mapper>

@@ -646,7 +646,16 @@
         		MmdiFrame       = '';
         		Mhttpurl        = '';
         		MmainframeSize  = '';
-         
+         /**
+                 * menu open 실행되는 event
+                 * @private
+                 * @param {XaComp} this(현재폼)
+                 * @param {object} 펼침접힘실행버튼
+                 * @return
+                 * @example
+                 *   Iject.Mdi.leftMenuAction(this,obj);
+                 * @memberOf Iject.Mdi
+                 */
         this.gfnLeftMenuAction = function(o,oBtn)
         {
 
@@ -677,6 +686,24 @@
 
         	}
         };
+
+                /**
+                 * 메뉴 아이디를  기준으로 신규 윈도우 화면을 생성하고 open 시킴
+                 * @param {XaComp} this(현재폼)
+                 * @param {object} arguments
+                 * @return
+                 * @example
+                 *  var oObj = {
+                 *       ds : this.ds_menu,
+                 *       nRow : e.row,
+                 *       aArg : []
+                 *   };
+                 *        Iject.Mdi.call(this,oObj);
+                 * @memberOf Iject.Mdi
+                 */
+        this.call = function(XComp,oObj){
+
+        }
         });
 
 
